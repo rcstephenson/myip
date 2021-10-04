@@ -6,7 +6,7 @@ function generateCordicAngles(NSTAGES, PhaseWidth, verbose::Bool=false)
     x_norm = zeros(UInt16,NSTAGES-1)
     for k = 1:(NSTAGES-1)
         x[k] = atan(1,2^(k))
-        x_norm[k] =  trunc(UInt16,x[k]/(2*π) * ((2^16)))
+        x_norm[k] =  trunc(UInt16,x[k]/(2*π) * ((2^16)-1))
         verbose ? @printf("% 3d | % -12.7f % -7d 0x%-x\n", k, x[k]*(180/pi), x_norm[k],x_norm[k]) : 0;
     end
     return x_norm
